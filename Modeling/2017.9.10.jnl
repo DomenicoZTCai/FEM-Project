@@ -1,0 +1,1363 @@
+# -*- coding: mbcs -*-
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.openStep(
+    'Z:/Desktop/PoliMi_FEM/Project/Modeling/central_shaft_original.stp', 
+    scaleFromFile=OFF)
+mdb.models['Model-1'].PartFromGeometryFile(combine=False, dimensionality=
+    THREE_D, geometryFile=mdb.acis, name='central_shaft_original', type=
+    DEFORMABLE_BODY)
+mdb.models['Model-1'].Part(name='central_shaft_outer', objectToCopy=
+    mdb.models['Model-1'].parts['central_shaft_original'])
+mdb.models['Model-1'].ConstrainedSketch(gridSpacing=2.18, name='__profile__', 
+    sheetSize=87.59, transform=
+    mdb.models['Model-1'].parts['central_shaft_original'].MakeSketchTransform(
+    sketchPlane=mdb.models['Model-1'].parts['central_shaft_original'].faces[10], 
+    sketchPlaneSide=SIDE1, 
+    sketchUpEdge=mdb.models['Model-1'].parts['central_shaft_original'].edges[29], 
+    sketchOrientation=RIGHT, origin=(50.0, 0.0, 0.0)))
+mdb.models['Model-1'].parts['central_shaft_original'].projectReferencesOntoSketch(
+    filter=COPLANAR_EDGES, sketch=
+    mdb.models['Model-1'].sketches['__profile__'])
+mdb.models['Model-1'].sketches['__profile__'].CircleByCenterPerimeter(center=(
+    0.0, 0.0), point1=(-6.54, 11.8100973747044))
+mdb.models['Model-1'].sketches['__profile__'].CoincidentConstraint(
+    addUndoState=False, entity1=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[5], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[2])
+mdb.models['Model-1'].sketches['__profile__'].CircleByCenterPerimeter(center=(
+    0.0, 0.0), point1=(-13.4747291252922, 7.63))
+mdb.models['Model-1'].sketches['__profile__'].CoincidentConstraint(
+    addUndoState=False, entity1=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[6], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[3])
+mdb.models['Model-1'].parts['central_shaft_original'].CutExtrude(
+    flipExtrudeDirection=OFF, sketch=
+    mdb.models['Model-1'].sketches['__profile__'], sketchOrientation=RIGHT, 
+    sketchPlane=mdb.models['Model-1'].parts['central_shaft_original'].faces[10]
+    , sketchPlaneSide=SIDE1, sketchUpEdge=
+    mdb.models['Model-1'].parts['central_shaft_original'].edges[29])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].ConstrainedSketch(gridSpacing=2.18, name='__profile__', 
+    sheetSize=87.59, transform=
+    mdb.models['Model-1'].parts['central_shaft_outer'].MakeSketchTransform(
+    sketchPlane=mdb.models['Model-1'].parts['central_shaft_outer'].faces[10], 
+    sketchPlaneSide=SIDE1, 
+    sketchUpEdge=mdb.models['Model-1'].parts['central_shaft_outer'].edges[29], 
+    sketchOrientation=RIGHT, origin=(50.0, 0.0, 0.0)))
+mdb.models['Model-1'].parts['central_shaft_outer'].projectReferencesOntoSketch(
+    filter=COPLANAR_EDGES, sketch=
+    mdb.models['Model-1'].sketches['__profile__'])
+mdb.models['Model-1'].sketches['__profile__'].CircleByCenterPerimeter(center=(
+    0.0, 0.0), point1=(-7.35303853257779, 11.3217853865204))
+mdb.models['Model-1'].sketches['__profile__'].CoincidentConstraint(
+    addUndoState=False, entity1=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[5], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[2])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].ConstrainedSketch(gridSpacing=1.48, name='__profile__', 
+    sheetSize=59.39, transform=
+    mdb.models['Model-1'].parts['central_shaft_outer'].MakeSketchTransform(
+    sketchPlane=mdb.models['Model-1'].parts['central_shaft_outer'].faces[0], 
+    sketchPlaneSide=SIDE1, 
+    sketchUpEdge=mdb.models['Model-1'].parts['central_shaft_outer'].edges[23], 
+    sketchOrientation=RIGHT, origin=(104.0, 0.0, 0.0)))
+mdb.models['Model-1'].parts['central_shaft_outer'].projectReferencesOntoSketch(
+    filter=COPLANAR_EDGES, sketch=
+    mdb.models['Model-1'].sketches['__profile__'])
+mdb.models['Model-1'].parts['central_shaft_outer'].projectEdgesOntoSketch(
+    edges=(mdb.models['Model-1'].parts['central_shaft_outer'].edges[18], ), 
+    sketch=mdb.models['Model-1'].sketches['__profile__'])
+mdb.models['Model-1'].parts['central_shaft_outer'].projectEdgesOntoSketch(
+    edges=(mdb.models['Model-1'].parts['central_shaft_outer'].edges[19], ), 
+    sketch=mdb.models['Model-1'].sketches['__profile__'])
+mdb.models['Model-1'].parts['central_shaft_outer'].CutExtrude(
+    flipExtrudeDirection=OFF, sketch=
+    mdb.models['Model-1'].sketches['__profile__'], sketchOrientation=RIGHT, 
+    sketchPlane=mdb.models['Model-1'].parts['central_shaft_outer'].faces[0], 
+    sketchPlaneSide=SIDE1, sketchUpEdge=
+    mdb.models['Model-1'].parts['central_shaft_outer'].edges[23])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].Material(name='Material-1')
+mdb.models['Model-1'].materials['Material-1'].Density(table=((7850.0, ), ))
+mdb.models['Model-1'].materials['Material-1'].Elastic(table=((210000000000.0, 
+    0.33), ))
+mdb.models['Model-1'].HomogeneousSolidSection(material='Material-1', name=
+    'Section-1', thickness=None)
+mdb.models['Model-1'].parts['central_shaft_original'].Set(cells=
+    mdb.models['Model-1'].parts['central_shaft_original'].cells.getSequenceFromMask(
+    ('[#1 ]', ), ), name='Set-1')
+mdb.models['Model-1'].parts['central_shaft_original'].SectionAssignment(offset=
+    0.0, offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['central_shaft_original'].sets['Set-1'], 
+    sectionName='Section-1', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].parts['central_shaft_outer'].Set(cells=
+    mdb.models['Model-1'].parts['central_shaft_outer'].cells.getSequenceFromMask(
+    ('[#1 ]', ), ), name='Set-1')
+mdb.models['Model-1'].parts['central_shaft_outer'].SectionAssignment(offset=0.0
+    , offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['central_shaft_outer'].sets['Set-1'], 
+    sectionName='Section-1', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].parts['central_shaft_original'].DatumPlaneByOffset(flip=
+    SIDE2, offset=15.0, plane=
+    mdb.models['Model-1'].parts['central_shaft_original'].faces[0])
+mdb.models['Model-1'].parts['central_shaft_original'].PartitionFaceByDatumPlane(
+    datumPlane=mdb.models['Model-1'].parts['central_shaft_original'].datums[4], 
+    faces=
+    mdb.models['Model-1'].parts['central_shaft_original'].faces.getSequenceFromMask(
+    ('[#18 ]', ), ))
+mdb.models['Model-1'].parts['central_shaft_outer'].DatumPlaneByPrincipalPlane(
+    offset=0.0, principalPlane=XYPLANE)
+mdb.models['Model-1'].parts['central_shaft_outer'].DatumPlaneByPrincipalPlane(
+    offset=5.0, principalPlane=XYPLANE)
+mdb.models['Model-1'].parts['central_shaft_outer'].features['Datum plane-2'].setValues(
+    offset=2.5)
+mdb.models['Model-1'].parts['central_shaft_outer'].regenerate()
+mdb.models['Model-1'].parts['central_shaft_outer'].regenerate()
+mdb.models['Model-1'].parts['central_shaft_outer'].DatumPlaneByPrincipalPlane(
+    offset=-2.5, principalPlane=XYPLANE)
+mdb.models['Model-1'].parts['central_shaft_outer'].features['Datum plane-2'].setValues(
+    offset=2.0)
+mdb.models['Model-1'].parts['central_shaft_outer'].regenerate()
+mdb.models['Model-1'].parts['central_shaft_outer'].features['Datum plane-3'].setValues(
+    offset=-2.0)
+mdb.models['Model-1'].parts['central_shaft_outer'].regenerate()
+mdb.models['Model-1'].parts['central_shaft_outer'].PartitionFaceByDatumPlane(
+    datumPlane=mdb.models['Model-1'].parts['central_shaft_outer'].datums[5], 
+    faces=
+    mdb.models['Model-1'].parts['central_shaft_outer'].faces.getSequenceFromMask(
+    ('[#8 ]', ), ))
+mdb.models['Model-1'].parts['central_shaft_outer'].PartitionFaceByDatumPlane(
+    datumPlane=mdb.models['Model-1'].parts['central_shaft_outer'].datums[6], 
+    faces=
+    mdb.models['Model-1'].parts['central_shaft_outer'].faces.getSequenceFromMask(
+    ('[#1 ]', ), ))
+mdb.models['Model-1'].rootAssembly.DatumCsysByDefault(CARTESIAN)
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name=
+    'central_shaft_original-1', part=
+    mdb.models['Model-1'].parts['central_shaft_original'])
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name=
+    'central_shaft_outer-1', part=
+    mdb.models['Model-1'].parts['central_shaft_outer'])
+mdb.models['Model-1'].parts.changeKey(fromName='central_shaft_original', 
+    toName='central_shaft_inner')
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].rootAssembly.ReferencePoint(point=
+    mdb.models['Model-1'].rootAssembly.instances['central_shaft_original-1'].InterestingPoint(
+    mdb.models['Model-1'].rootAssembly.instances['central_shaft_original-1'].edges[8], 
+    CENTER))
+mdb.models['Model-1'].rootAssembly.ReferencePoint(point=
+    mdb.models['Model-1'].rootAssembly.instances['central_shaft_original-1'].InterestingPoint(
+    mdb.models['Model-1'].rootAssembly.instances['central_shaft_original-1'].edges[40], 
+    CENTER))
+mdb.models['Model-1'].parts['central_shaft_outer'].DatumPointByMidPoint(point1=
+    mdb.models['Model-1'].parts['central_shaft_outer'].InterestingPoint(
+    mdb.models['Model-1'].parts['central_shaft_outer'].edges[5], MIDDLE), 
+    point2=mdb.models['Model-1'].parts['central_shaft_outer'].InterestingPoint(
+    mdb.models['Model-1'].parts['central_shaft_outer'].edges[0], MIDDLE))
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].rootAssembly.ReferencePoint(point=
+    mdb.models['Model-1'].rootAssembly.instances['central_shaft_outer-1'].datums[9])
+mdb.models['Model-1'].parts['central_shaft_inner'].DatumPointByMidPoint(point1=
+    mdb.models['Model-1'].parts['central_shaft_inner'].InterestingPoint(
+    mdb.models['Model-1'].parts['central_shaft_inner'].edges[15], MIDDLE), 
+    point2=mdb.models['Model-1'].parts['central_shaft_inner'].InterestingPoint(
+    mdb.models['Model-1'].parts['central_shaft_inner'].edges[17], MIDDLE))
+mdb.models['Model-1'].parts['central_shaft_inner'].DatumPointByOffset(point=
+    mdb.models['Model-1'].parts['central_shaft_inner'].datums[6], vector=(0.0, 
+    -11.0, 0.0))
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].rootAssembly.ReferencePoint(point=
+    mdb.models['Model-1'].rootAssembly.instances['central_shaft_original-1'].datums[7])
+mdb.models['Model-1'].rootAssembly.Set(name='m_Set-1', referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[6], ))
+mdb.models['Model-1'].rootAssembly.Surface(name='s_Surf-1', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['central_shaft_original-1'].faces.getSequenceFromMask(
+    ('[#42 ]', ), ))
+mdb.models['Model-1'].Coupling(controlPoint=
+    mdb.models['Model-1'].rootAssembly.sets['m_Set-1'], couplingType=
+    DISTRIBUTING, influenceRadius=WHOLE_SURFACE, localCsys=None, name=
+    'Constraint-1', surface=
+    mdb.models['Model-1'].rootAssembly.surfaces['s_Surf-1'], u1=ON, u2=ON, u3=
+    ON, ur1=ON, ur2=ON, ur3=ON, weightingMethod=UNIFORM)
+mdb.models['Model-1'].rootAssembly.Set(name='m_Set-2', referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[7], ))
+mdb.models['Model-1'].rootAssembly.Surface(name='s_Surf-2', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['central_shaft_original-1'].faces.getSequenceFromMask(
+    ('[#c000 ]', ), ))
+mdb.models['Model-1'].Coupling(controlPoint=
+    mdb.models['Model-1'].rootAssembly.sets['m_Set-2'], couplingType=
+    DISTRIBUTING, influenceRadius=WHOLE_SURFACE, localCsys=None, name=
+    'Constraint-2', surface=
+    mdb.models['Model-1'].rootAssembly.surfaces['s_Surf-2'], u1=ON, u2=ON, u3=
+    ON, ur1=ON, ur2=ON, ur3=ON, weightingMethod=UNIFORM)
+mdb.models['Model-1'].rootAssembly.Set(name='m_Set-3', referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[8], ))
+mdb.models['Model-1'].rootAssembly.Surface(name='s_Surf-3', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['central_shaft_outer-1'].faces.getSequenceFromMask(
+    ('[#2 ]', ), ))
+mdb.models['Model-1'].Coupling(controlPoint=
+    mdb.models['Model-1'].rootAssembly.sets['m_Set-3'], couplingType=
+    DISTRIBUTING, influenceRadius=WHOLE_SURFACE, localCsys=None, name=
+    'Constraint-3', surface=
+    mdb.models['Model-1'].rootAssembly.surfaces['s_Surf-3'], u1=ON, u2=ON, u3=
+    ON, ur1=ON, ur2=ON, ur3=ON, weightingMethod=UNIFORM)
+mdb.models['Model-1'].parts['central_shaft_inner'].DatumPlaneByOffset(flip=
+    SIDE2, offset=10.0, plane=
+    mdb.models['Model-1'].parts['central_shaft_inner'].faces[11])
+mdb.models['Model-1'].parts['central_shaft_inner'].DatumPlaneByOffset(flip=
+    SIDE2, offset=11.5, plane=
+    mdb.models['Model-1'].parts['central_shaft_inner'].faces[9])
+mdb.models['Model-1'].parts['central_shaft_inner'].PartitionFaceByDatumPlane(
+    datumPlane=mdb.models['Model-1'].parts['central_shaft_inner'].datums[8], 
+    faces=
+    mdb.models['Model-1'].parts['central_shaft_inner'].faces.getSequenceFromMask(
+    ('[#400 ]', ), ))
+mdb.models['Model-1'].parts['central_shaft_inner'].PartitionFaceByDatumPlane(
+    datumPlane=mdb.models['Model-1'].parts['central_shaft_inner'].datums[9], 
+    faces=
+    mdb.models['Model-1'].parts['central_shaft_inner'].faces.getSequenceFromMask(
+    ('[#800 ]', ), ))
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].rootAssembly.Surface(name='m_Surf-4', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['central_shaft_outer-1'].faces.getSequenceFromMask(
+    ('[#4 ]', ), ))
+mdb.models['Model-1'].rootAssembly.Surface(name='s_Surf-4', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['central_shaft_original-1'].faces.getSequenceFromMask(
+    ('[#2000 ]', ), ))
+mdb.models['Model-1'].Tie(adjust=ON, master=
+    mdb.models['Model-1'].rootAssembly.surfaces['m_Surf-4'], name=
+    'Constraint-4', positionToleranceMethod=COMPUTED, slave=
+    mdb.models['Model-1'].rootAssembly.surfaces['s_Surf-4'], thickness=ON, 
+    tieRotations=ON)
+mdb.models['Model-1'].rootAssembly.Set(name='Set-4', referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[7], ))
+mdb.models['Model-1'].DisplacementBC(amplitude=UNSET, createStepName='Initial', 
+    distributionType=UNIFORM, fieldName='', localCsys=None, name='BC-1', 
+    region=mdb.models['Model-1'].rootAssembly.sets['Set-4'], u1=SET, u2=SET, 
+    u3=SET, ur1=UNSET, ur2=UNSET, ur3=UNSET)
+mdb.models['Model-1'].rootAssembly.Set(name='Set-5', referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[6], ))
+mdb.models['Model-1'].DisplacementBC(amplitude=UNSET, createStepName='Initial', 
+    distributionType=UNIFORM, fieldName='', localCsys=None, name='BC-2', 
+    region=mdb.models['Model-1'].rootAssembly.sets['Set-5'], u1=UNSET, u2=SET, 
+    u3=SET, ur1=UNSET, ur2=UNSET, ur3=UNSET)
+mdb.models['Model-1'].parts['central_shaft_inner'].seedPart(deviationFactor=0.1
+    , minSizeFactor=0.1, size=1.0)
+mdb.models['Model-1'].parts['central_shaft_inner'].setMeshControls(elemShape=
+    TET, regions=
+    mdb.models['Model-1'].parts['central_shaft_inner'].cells.getSequenceFromMask(
+    ('[#1 ]', ), ), technique=FREE)
+mdb.models['Model-1'].parts['central_shaft_inner'].setElementType(elemTypes=(
+    ElemType(elemCode=C3D20R, elemLibrary=STANDARD), ElemType(elemCode=C3D15, 
+    elemLibrary=STANDARD), ElemType(elemCode=C3D10, elemLibrary=STANDARD)), 
+    regions=(
+    mdb.models['Model-1'].parts['central_shaft_inner'].cells.getSequenceFromMask(
+    ('[#1 ]', ), ), ))
+mdb.models['Model-1'].parts['central_shaft_inner'].generateMesh()
+mdb.models['Model-1'].parts['central_shaft_inner'].setElementType(elemTypes=(
+    ElemType(elemCode=C3D20R, elemLibrary=STANDARD), ElemType(elemCode=C3D15, 
+    elemLibrary=STANDARD), ElemType(elemCode=C3D10, elemLibrary=STANDARD)), 
+    regions=(
+    mdb.models['Model-1'].parts['central_shaft_inner'].cells.getSequenceFromMask(
+    ('[#1 ]', ), ), ))
+mdb.models['Model-1'].parts['central_shaft_inner'].deleteMesh()
+mdb.models['Model-1'].parts['central_shaft_inner'].seedPart(deviationFactor=0.1
+    , minSizeFactor=0.1, size=1.5)
+mdb.models['Model-1'].parts['central_shaft_inner'].generateMesh()
+mdb.models['Model-1'].parts['central_shaft_inner'].deleteMesh()
+mdb.models['Model-1'].parts['central_shaft_inner'].seedPart(deviationFactor=0.1
+    , minSizeFactor=0.1, size=1.0)
+mdb.models['Model-1'].parts['central_shaft_inner'].generateMesh()
+mdb.models['Model-1'].parts['central_shaft_outer'].seedEdgeBySize(constraint=
+    FINER, deviationFactor=0.1, edges=
+    mdb.models['Model-1'].parts['central_shaft_outer'].edges.getSequenceFromMask(
+    ('[#39c2 ]', ), ), size=2.5)
+mdb.models['Model-1'].parts['central_shaft_outer'].seedPart(deviationFactor=0.1
+    , minSizeFactor=0.1, size=3.5)
+mdb.models['Model-1'].parts['central_shaft_outer'].generateMesh()
+mdb.models['Model-1'].parts['central_shaft_outer'].deleteMesh()
+mdb.models['Model-1'].parts['central_shaft_outer'].seedPart(deviationFactor=0.1
+    , minSizeFactor=0.1, size=3.0)
+mdb.models['Model-1'].parts['central_shaft_outer'].generateMesh()
+mdb.models['Model-1'].parts['central_shaft_outer'].deleteMesh()
+mdb.models['Model-1'].parts['central_shaft_outer'].seedPart(deviationFactor=0.1
+    , minSizeFactor=0.1, size=2.0)
+mdb.models['Model-1'].parts['central_shaft_outer'].generateMesh()
+mdb.models['Model-1'].parts['central_shaft_outer'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['central_shaft_outer'].cells.getSequenceFromMask(
+    ('[#1 ]', ), ))
+mdb.models['Model-1'].parts['central_shaft_outer'].setMeshControls(elemShape=
+    TET, regions=
+    mdb.models['Model-1'].parts['central_shaft_outer'].cells.getSequenceFromMask(
+    ('[#1 ]', ), ), technique=FREE)
+mdb.models['Model-1'].parts['central_shaft_outer'].setElementType(elemTypes=(
+    ElemType(elemCode=C3D20R, elemLibrary=STANDARD), ElemType(elemCode=C3D15, 
+    elemLibrary=STANDARD), ElemType(elemCode=C3D10, elemLibrary=STANDARD)), 
+    regions=(
+    mdb.models['Model-1'].parts['central_shaft_outer'].cells.getSequenceFromMask(
+    ('[#1 ]', ), ), ))
+mdb.models['Model-1'].parts['central_shaft_outer'].generateMesh()
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].parts['central_shaft_inner'].DatumPlaneByOffset(flip=
+    SIDE1, offset=20.0, plane=
+    mdb.models['Model-1'].parts['central_shaft_inner'].faces[12])
+mdb.models['Model-1'].parts['central_shaft_inner'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['central_shaft_inner'].cells.getSequenceFromMask(
+    ('[#1 ]', ), ))
+mdb.models['Model-1'].parts['central_shaft_inner'].PartitionFaceByDatumPlane(
+    datumPlane=mdb.models['Model-1'].parts['central_shaft_inner'].datums[18], 
+    faces=
+    mdb.models['Model-1'].parts['central_shaft_inner'].faces.getSequenceFromMask(
+    ('[#108 ]', ), ))
+mdb.models['Model-1'].parts['central_shaft_inner'].generateMesh()
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].rootAssembly.Set(name='m_Set-6', referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[9], ))
+mdb.models['Model-1'].rootAssembly.Surface(name='s_Surf-6', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['central_shaft_original-1'].faces.getSequenceFromMask(
+    ('[#402 ]', ), ))
+mdb.models['Model-1'].Coupling(controlPoint=
+    mdb.models['Model-1'].rootAssembly.sets['m_Set-6'], couplingType=
+    DISTRIBUTING, influenceRadius=WHOLE_SURFACE, localCsys=None, name=
+    'Constraint-5', surface=
+    mdb.models['Model-1'].rootAssembly.surfaces['s_Surf-6'], u1=ON, u2=ON, u3=
+    ON, ur1=ON, ur2=ON, ur3=ON, weightingMethod=UNIFORM)
+del mdb.models['Model-1'].constraints['Constraint-3']
+del mdb.models['Model-1'].rootAssembly.features['RP-3']
+del mdb.models['Model-1'].parts['central_shaft_outer'].features['Datum pt-1']
+mdb.models['Model-1'].parts['central_shaft_outer'].DatumPointByOffset(point=
+    mdb.models['Model-1'].parts['central_shaft_outer'].InterestingPoint(
+    mdb.models['Model-1'].parts['central_shaft_outer'].edges[3], CENTER), 
+    vector=(12.5, 15.49, 0.0))
+mdb.models['Model-1'].parts['central_shaft_outer'].DatumPointByOffset(point=
+    mdb.models['Model-1'].parts['central_shaft_outer'].datums[16], vector=(0.0, 
+    4.0, 0.0))
+mdb.models['Model-1'].parts['central_shaft_outer'].DatumPointByOffset(point=
+    mdb.models['Model-1'].parts['central_shaft_outer'].datums[16], vector=(4.0, 
+    0.0, 1.46))
+mdb.models['Model-1'].parts['central_shaft_outer'].DatumCsysByThreePoints(
+    coordSysType=CARTESIAN, name='Datum csys-1', origin=
+    mdb.models['Model-1'].parts['central_shaft_outer'].datums[16], point1=
+    mdb.models['Model-1'].parts['central_shaft_outer'].datums[18], point2=
+    mdb.models['Model-1'].parts['central_shaft_outer'].datums[17])
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].rootAssembly.ReferencePoint(point=
+    mdb.models['Model-1'].rootAssembly.instances['central_shaft_outer-1'].datums[16])
+mdb.models['Model-1'].rootAssembly.Set(name='m_Set-7', referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[22], ))
+mdb.models['Model-1'].rootAssembly.Surface(name='s_Surf-7', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['central_shaft_outer-1'].faces.getSequenceFromMask(
+    ('[#2 ]', ), ))
+mdb.models['Model-1'].Coupling(controlPoint=
+    mdb.models['Model-1'].rootAssembly.sets['m_Set-7'], couplingType=
+    DISTRIBUTING, influenceRadius=WHOLE_SURFACE, localCsys=None, name=
+    'Constraint-3', surface=
+    mdb.models['Model-1'].rootAssembly.surfaces['s_Surf-7'], u1=ON, u2=ON, u3=
+    ON, ur1=ON, ur2=ON, ur3=ON, weightingMethod=UNIFORM)
+mdb.models['Model-1'].rootAssembly.Set(name='Set-8', referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[22], ))
+mdb.models['Model-1'].DisplacementBC(amplitude=UNSET, createStepName='Initial', 
+    distributionType=UNIFORM, fieldName='', localCsys=
+    mdb.models['Model-1'].rootAssembly.instances['central_shaft_outer-1'].datums[19]
+    , name='BC-3', region=mdb.models['Model-1'].rootAssembly.sets['Set-8'], u1=
+    UNSET, u2=UNSET, u3=SET, ur1=UNSET, ur2=UNSET, ur3=UNSET)
+mdb.models['Model-1'].StaticStep(name='Step-1', previous='Initial')
+mdb.models['Model-1'].rootAssembly.Surface(name='Surf-8', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['central_shaft_original-1'].faces.getSequenceFromMask(
+    ('[#20000000 ]', ), ))
+mdb.models['Model-1'].Pressure(amplitude=UNSET, createStepName='Step-1', 
+    distributionType=TOTAL_FORCE, field='', magnitude=760.14, name='Load-1', 
+    region=mdb.models['Model-1'].rootAssembly.surfaces['Surf-8'])
+mdb.models['Model-1'].rootAssembly.Surface(name='Surf-9', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['central_shaft_original-1'].faces.getSequenceFromMask(
+    ('[#4000 ]', ), ))
+mdb.models['Model-1'].Pressure(amplitude=UNSET, createStepName='Step-1', 
+    distributionType=TOTAL_FORCE, field='', magnitude=221.8, name='Load-2', 
+    region=mdb.models['Model-1'].rootAssembly.surfaces['Surf-9'])
+mdb.models['Model-1'].rootAssembly.Set(name='Set-9', referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[9], ))
+mdb.models['Model-1'].ConcentratedForce(cf2=288.21, createStepName='Step-1', 
+    distributionType=UNIFORM, field='', localCsys=None, name='Load-3', region=
+    mdb.models['Model-1'].rootAssembly.sets['Set-9'])
+mdb.models['Model-1'].rootAssembly.Set(name='Set-10', referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[22], ))
+mdb.models['Model-1'].ConcentratedForce(cf2=-960.59, createStepName='Step-1', 
+    distributionType=UNIFORM, field='', localCsys=None, name='Load-4', region=
+    mdb.models['Model-1'].rootAssembly.sets['Set-10'])
+mdb.models['Model-1'].loads['Load-4'].setValues(distributionType=UNIFORM, 
+    field='', localCsys=
+    mdb.models['Model-1'].rootAssembly.instances['central_shaft_outer-1'].datums[19])
+mdb.models['Model-1'].boundaryConditions['BC-1'].setValues(u1=UNSET)
+mdb.models['Model-1'].boundaryConditions['BC-2'].setValues(u1=SET)
+mdb.models['Model-1'].boundaryConditions['BC-1'].setValues(u1=SET)
+mdb.models['Model-1'].boundaryConditions['BC-2'].setValues(u1=UNSET)
+mdb.models['Model-1'].rootAssembly.Set(name='Set-11', referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[6], ))
+mdb.models['Model-1'].ConcentratedForce(cf1=-433.06, createStepName='Step-1', 
+    distributionType=UNIFORM, field='', localCsys=None, name='Load-5', region=
+    mdb.models['Model-1'].rootAssembly.sets['Set-11'])
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='Model-1', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='Job-1', nodalOutputPrecision=SINGLE, 
+    numCpus=1, numGPUs=0, queue=None, resultsFormat=ODB, scratch='', type=
+    ANALYSIS, userSubroutine='', waitHours=0, waitMinutes=0)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'CAIDOMENICOCF01', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_S_SURF-4-ASSEMBLY_M_SURF-4), ADJUSTED NODES WITH VERY SMALL ADJUSTMENTS WERE NOT PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '52 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\temp\\Job-1.odb', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'CAIDOMENICOCF01', 'handle': 1596, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 3686.0})
+del mdb.jobs['Job-1']
+mdb.models['Model-1'].parts['central_shaft_inner'].deleteMesh()
+mdb.models['Model-1'].parts['central_shaft_inner'].seedPart(deviationFactor=0.1
+    , minSizeFactor=0.1, size=1.5)
+mdb.models['Model-1'].parts['central_shaft_inner'].generateMesh()
+mdb.models['Model-1'].parts['central_shaft_outer'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['central_shaft_outer'].cells.getSequenceFromMask(
+    ('[#1 ]', ), ))
+mdb.models['Model-1'].parts['central_shaft_outer'].setMeshControls(algorithm=
+    ADVANCING_FRONT, elemShape=HEX, regions=
+    mdb.models['Model-1'].parts['central_shaft_outer'].cells.getSequenceFromMask(
+    ('[#1 ]', ), ), technique=SWEEP)
+mdb.models['Model-1'].parts['central_shaft_outer'].setElementType(elemTypes=(
+    ElemType(elemCode=C3D8R, elemLibrary=STANDARD), ElemType(elemCode=C3D6, 
+    elemLibrary=STANDARD), ElemType(elemCode=C3D4, elemLibrary=STANDARD)), 
+    regions=(
+    mdb.models['Model-1'].parts['central_shaft_outer'].cells.getSequenceFromMask(
+    ('[#1 ]', ), ), ))
+mdb.models['Model-1'].parts['central_shaft_outer'].generateMesh()
+mdb.models['Model-1'].parts['central_shaft_outer'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['central_shaft_outer'].cells.getSequenceFromMask(
+    ('[#1 ]', ), ))
+mdb.models['Model-1'].parts['central_shaft_outer'].seedEdgeByNumber(constraint=
+    FINER, edges=
+    mdb.models['Model-1'].parts['central_shaft_outer'].edges.getSequenceFromMask(
+    ('[#600 ]', ), ), number=40)
+mdb.models['Model-1'].parts['central_shaft_outer'].seedEdgeByNumber(constraint=
+    FINER, edges=
+    mdb.models['Model-1'].parts['central_shaft_outer'].edges.getSequenceFromMask(
+    ('[#600 ]', ), ), number=20)
+mdb.models['Model-1'].parts['central_shaft_outer'].seedEdgeByNumber(constraint=
+    FINER, edges=
+    mdb.models['Model-1'].parts['central_shaft_outer'].edges.getSequenceFromMask(
+    ('[#c018 ]', ), ), number=20)
+mdb.models['Model-1'].parts['central_shaft_outer'].generateMesh()
+mdb.models['Model-1'].parts['central_shaft_outer'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['central_shaft_outer'].cells.getSequenceFromMask(
+    ('[#1 ]', ), ))
+mdb.models['Model-1'].parts['central_shaft_outer'].seedEdgeByNumber(constraint=
+    FINER, edges=
+    mdb.models['Model-1'].parts['central_shaft_outer'].edges.getSequenceFromMask(
+    ('[#10 ]', ), ), number=4)
+mdb.models['Model-1'].parts['central_shaft_outer'].PartitionFaceByDatumPlane(
+    datumPlane=mdb.models['Model-1'].parts['central_shaft_outer'].datums[6], 
+    faces=
+    mdb.models['Model-1'].parts['central_shaft_outer'].faces.getSequenceFromMask(
+    ('[#4 ]', ), ))
+mdb.models['Model-1'].parts['central_shaft_outer'].PartitionFaceByDatumPlane(
+    datumPlane=mdb.models['Model-1'].parts['central_shaft_outer'].datums[5], 
+    faces=
+    mdb.models['Model-1'].parts['central_shaft_outer'].faces.getSequenceFromMask(
+    ('[#8 ]', ), ))
+mdb.models['Model-1'].parts['central_shaft_outer'].PartitionFaceByDatumPlane(
+    datumPlane=mdb.models['Model-1'].parts['central_shaft_outer'].datums[5], 
+    faces=
+    mdb.models['Model-1'].parts['central_shaft_outer'].faces.getSequenceFromMask(
+    ('[#80 ]', ), ))
+mdb.models['Model-1'].parts['central_shaft_outer'].PartitionFaceByDatumPlane(
+    datumPlane=mdb.models['Model-1'].parts['central_shaft_outer'].datums[6], 
+    faces=
+    mdb.models['Model-1'].parts['central_shaft_outer'].faces.getSequenceFromMask(
+    ('[#1 ]', ), ))
+mdb.models['Model-1'].parts['central_shaft_outer'].seedEdgeByNumber(constraint=
+    FINER, edges=
+    mdb.models['Model-1'].parts['central_shaft_outer'].edges.getSequenceFromMask(
+    ('[#1000400 ]', ), ), number=4)
+mdb.models['Model-1'].parts['central_shaft_outer'].seedEdgeByNumber(constraint=
+    FINER, edges=
+    mdb.models['Model-1'].parts['central_shaft_outer'].edges.getSequenceFromMask(
+    ('[#78118008 ]', ), ), number=15)
+mdb.models['Model-1'].parts['central_shaft_outer'].generateMesh()
+mdb.models['Model-1'].parts['central_shaft_outer'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['central_shaft_outer'].cells.getSequenceFromMask(
+    ('[#1 ]', ), ))
+mdb.models['Model-1'].parts['central_shaft_outer'].seedEdgeByNumber(constraint=
+    FINER, edges=
+    mdb.models['Model-1'].parts['central_shaft_outer'].edges.getSequenceFromMask(
+    ('[#78118008 ]', ), ), number=10)
+mdb.models['Model-1'].parts['central_shaft_outer'].generateMesh()
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='Model-1', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='Job-1', nodalOutputPrecision=SINGLE, 
+    numCpus=1, numGPUs=0, queue=None, resultsFormat=ODB, scratch='', type=
+    ANALYSIS, userSubroutine='', waitHours=0, waitMinutes=0)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'CAIDOMENICOCF01', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'CAIDOMENICOCF01', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_S_SURF-4-ASSEMBLY_M_SURF-4), NOT ALL THE NODES THAT HAVE BEEN ADJUSTED WERE PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_S_SURF-4-ASSEMBLY_M_SURF-4), NOT ALL THE NODES THAT HAVE BEEN ADJUSTED WERE PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_S_SURF-4-ASSEMBLY_M_SURF-4), ADJUSTED NODES WITH VERY SMALL ADJUSTMENTS WERE NOT PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_S_SURF-4-ASSEMBLY_M_SURF-4), ADJUSTED NODES WITH VERY SMALL ADJUSTMENTS WERE NOT PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '220 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '220 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\temp\\Job-1.odb', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\temp\\Job-1.odb', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'CAIDOMENICOCF01', 'handle': 4272, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'CAIDOMENICOCF01', 'handle': 4272, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 3686.0})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 3686.0})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Sun Sep 10 15:13:52 2017', 
+    'jobName': 'Job-1'})
+mdb.models['Model-1'].materials['Material-1'].elastic.setValues(table=((
+    210000.0, 0.33), ))
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'CAIDOMENICOCF01', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'CAIDOMENICOCF01', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_S_SURF-4-ASSEMBLY_M_SURF-4), NOT ALL THE NODES THAT HAVE BEEN ADJUSTED WERE PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_S_SURF-4-ASSEMBLY_M_SURF-4), NOT ALL THE NODES THAT HAVE BEEN ADJUSTED WERE PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_S_SURF-4-ASSEMBLY_M_SURF-4), ADJUSTED NODES WITH VERY SMALL ADJUSTMENTS WERE NOT PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_S_SURF-4-ASSEMBLY_M_SURF-4), ADJUSTED NODES WITH VERY SMALL ADJUSTMENTS WERE NOT PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '220 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '220 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\temp\\Job-1.odb', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\temp\\Job-1.odb', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'CAIDOMENICOCF01', 'handle': 4356, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'CAIDOMENICOCF01', 'handle': 4356, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 3686.0})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 3686.0})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Sun Sep 10 16:20:41 2017', 
+    'jobName': 'Job-1'})
+# Save by caidomenico on 2017_09_10-17.06.00; build 2016 2015_09_25-04.31.09 126547
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].loads['Load-1'].setValues(magnitude=3600.0)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'CAIDOMENICOCF01', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_S_SURF-4-ASSEMBLY_M_SURF-4), NOT ALL THE NODES THAT HAVE BEEN ADJUSTED WERE PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_S_SURF-4-ASSEMBLY_M_SURF-4), ADJUSTED NODES WITH VERY SMALL ADJUSTMENTS WERE NOT PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '220 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\temp\\Job-1.odb', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'CAIDOMENICOCF01', 'handle': 2460, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'memory': 3686.0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'increment': 1, 
+    'attempts': 1, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'timeIncrement': 1.0, 'stepTime': 1.0, 'step': 1, 'jobName': 'Job-1', 
+    'severe': 0, 'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'jobName': 'Job-1', 
+    'time': 'Wed Sep 13 18:52:07 2017'})
+del mdb.models['Model-1'].loads['Load-5']
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'CAIDOMENICOCF01', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_S_SURF-4-ASSEMBLY_M_SURF-4), NOT ALL THE NODES THAT HAVE BEEN ADJUSTED WERE PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_S_SURF-4-ASSEMBLY_M_SURF-4), ADJUSTED NODES WITH VERY SMALL ADJUSTMENTS WERE NOT PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '220 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\temp\\Job-1.odb', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'CAIDOMENICOCF01', 'handle': 2748, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'memory': 3686.0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'increment': 1, 
+    'attempts': 1, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'timeIncrement': 1.0, 'stepTime': 1.0, 'step': 1, 'jobName': 'Job-1', 
+    'severe': 0, 'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'jobName': 'Job-1', 
+    'time': 'Wed Sep 13 19:57:46 2017'})
+mdb.models['Model-1'].loads['Load-1'].setValues(distributionType=UNIFORM, 
+    magnitude=109977477.5)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'CAIDOMENICOCF01', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_S_SURF-4-ASSEMBLY_M_SURF-4), NOT ALL THE NODES THAT HAVE BEEN ADJUSTED WERE PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_S_SURF-4-ASSEMBLY_M_SURF-4), ADJUSTED NODES WITH VERY SMALL ADJUSTMENTS WERE NOT PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '220 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\temp\\Job-1.odb', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'CAIDOMENICOCF01', 'handle': 3852, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'memory': 3686.0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'increment': 1, 
+    'attempts': 1, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'timeIncrement': 1.0, 'stepTime': 1.0, 'step': 1, 'jobName': 'Job-1', 
+    'severe': 0, 'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'jobName': 'Job-1', 
+    'time': 'Wed Sep 13 22:07:03 2017'})
+mdb.models['Model-1'].StaticStep(name='Step-2', previous='Initial')
+mdb.models['Model-1'].rootAssembly.rotate(angle=180.0, axisDirection=(-104.0, 
+    0.0, 0.0), axisPoint=(104.0, 0.0, 0.0), instanceList=(
+    'central_shaft_outer-1', ))
+mdb.models['Model-1'].loads['Load-1'].setValues(distributionType=TOTAL_FORCE, 
+    magnitude=4399.0)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'CAIDOMENICOCF01', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_S_SURF-4-ASSEMBLY_M_SURF-4), NOT ALL THE NODES THAT HAVE BEEN ADJUSTED WERE PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_S_SURF-4-ASSEMBLY_M_SURF-4), ADJUSTED NODES WITH VERY SMALL ADJUSTMENTS WERE NOT PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '220 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\temp\\Job-1.odb', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'CAIDOMENICOCF01', 'handle': 4188, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'memory': 3686.0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'increment': 1, 
+    'attempts': 1, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'timeIncrement': 1.0, 'stepTime': 1.0, 'step': 1, 'jobName': 'Job-1', 
+    'severe': 0, 'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 2, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 1, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'memory': 3686.0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 1, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 2.0, 'increment': 1, 
+    'attempts': 1, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'timeIncrement': 1.0, 'stepTime': 1.0, 'step': 2, 'jobName': 'Job-1', 
+    'severe': 0, 'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 2, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'jobName': 'Job-1', 
+    'time': 'Wed Sep 13 22:40:51 2017'})
+del mdb.models['Model-1'].steps['Step-2']
+mdb.models['Model-1'].rootAssembly.Set(name='Set-12', referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[6], ))
+mdb.models['Model-1'].ConcentratedForce(cf1=-433.06, createStepName='Step-1', 
+    distributionType=UNIFORM, field='', localCsys=None, name='Load-5', region=
+    mdb.models['Model-1'].rootAssembly.sets['Set-12'])
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'CAIDOMENICOCF01', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_S_SURF-4-ASSEMBLY_M_SURF-4), NOT ALL THE NODES THAT HAVE BEEN ADJUSTED WERE PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_S_SURF-4-ASSEMBLY_M_SURF-4), ADJUSTED NODES WITH VERY SMALL ADJUSTMENTS WERE NOT PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '220 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\temp\\Job-1.odb', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'CAIDOMENICOCF01', 'handle': 964, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'memory': 3686.0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'increment': 1, 
+    'attempts': 1, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'timeIncrement': 1.0, 'stepTime': 1.0, 'step': 1, 'jobName': 'Job-1', 
+    'severe': 0, 'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'jobName': 'Job-1', 
+    'time': 'Wed Sep 13 23:04:10 2017'})
+mdb.models['Model-1'].loads['Load-1'].setValues(magnitude=4000.0)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'CAIDOMENICOCF01', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_S_SURF-4-ASSEMBLY_M_SURF-4), NOT ALL THE NODES THAT HAVE BEEN ADJUSTED WERE PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_S_SURF-4-ASSEMBLY_M_SURF-4), ADJUSTED NODES WITH VERY SMALL ADJUSTMENTS WERE NOT PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '220 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\temp\\Job-1.odb', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'CAIDOMENICOCF01', 'handle': 1436, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'memory': 3686.0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'increment': 1, 
+    'attempts': 1, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'timeIncrement': 1.0, 'stepTime': 1.0, 'step': 1, 'jobName': 'Job-1', 
+    'severe': 0, 'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'jobName': 'Job-1', 
+    'time': 'Wed Sep 13 23:15:30 2017'})
+# Save by caidomenico on 2017_09_16-18.23.25; build 2016 2015_09_24-22.31.09 126547
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].rootAssembly.rotate(angle=180.0, axisDirection=(-104.0, 
+    0.0, 0.0), axisPoint=(104.0, 0.0, 0.0), instanceList=(
+    'central_shaft_outer-1', ))
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'CAIDOMENICOCF01', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_S_SURF-4-ASSEMBLY_M_SURF-4), NOT ALL THE NODES THAT HAVE BEEN ADJUSTED WERE PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_S_SURF-4-ASSEMBLY_M_SURF-4), ADJUSTED NODES WITH VERY SMALL ADJUSTMENTS WERE NOT PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '220 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\temp\\Job-1.odb', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'CAIDOMENICOCF01', 'handle': 3032, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 3686.0})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Sun Sep 17 11:09:50 2017', 
+    'jobName': 'Job-1'})
+mdb.models['Model-1'].rootAssembly.rotate(angle=10.0, axisDirection=(-104.0, 
+    0.0, 0.0), axisPoint=(104.0, 0.0, 0.0), instanceList=(
+    'central_shaft_outer-1', ))
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'CAIDOMENICOCF01', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_S_SURF-4-ASSEMBLY_M_SURF-4), NOT ALL THE NODES THAT HAVE BEEN ADJUSTED WERE PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_S_SURF-4-ASSEMBLY_M_SURF-4), ADJUSTED NODES WITH VERY SMALL ADJUSTMENTS WERE NOT PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '220 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\temp\\Job-1.odb', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'CAIDOMENICOCF01', 'handle': 3880, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 3686.0})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Sun Sep 17 11:18:41 2017', 
+    'jobName': 'Job-1'})
+mdb.models['Model-1'].rootAssembly.rotate(angle=10.0, axisDirection=(-104.0, 
+    0.0, 0.0), axisPoint=(104.0, 0.0, 0.0), instanceList=(
+    'central_shaft_outer-1', ))
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'CAIDOMENICOCF01', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_S_SURF-4-ASSEMBLY_M_SURF-4), NOT ALL THE NODES THAT HAVE BEEN ADJUSTED WERE PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_S_SURF-4-ASSEMBLY_M_SURF-4), ADJUSTED NODES WITH VERY SMALL ADJUSTMENTS WERE NOT PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '220 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\temp\\Job-1.odb', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'CAIDOMENICOCF01', 'handle': 5776, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 3686.0})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Sun Sep 17 11:26:16 2017', 
+    'jobName': 'Job-1'})
+mdb.models['Model-1'].rootAssembly.rotate(angle=25.0, axisDirection=(-104.0, 
+    0.0, 0.0), axisPoint=(104.0, 0.0, 0.0), instanceList=(
+    'central_shaft_outer-1', ))
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'CAIDOMENICOCF01', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_S_SURF-4-ASSEMBLY_M_SURF-4), NOT ALL THE NODES THAT HAVE BEEN ADJUSTED WERE PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_S_SURF-4-ASSEMBLY_M_SURF-4), ADJUSTED NODES WITH VERY SMALL ADJUSTMENTS WERE NOT PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '220 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\temp\\Job-1.odb', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'CAIDOMENICOCF01', 'handle': 3788, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 3686.0})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Sun Sep 17 11:32:27 2017', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'CAIDOMENICOCF01', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_S_SURF-4-ASSEMBLY_M_SURF-4), NOT ALL THE NODES THAT HAVE BEEN ADJUSTED WERE PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_S_SURF-4-ASSEMBLY_M_SURF-4), ADJUSTED NODES WITH VERY SMALL ADJUSTMENTS WERE NOT PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '220 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\temp\\Job-1.odb', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'CAIDOMENICOCF01', 'handle': 3852, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 3686.0})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Sun Sep 17 11:39:55 2017', 
+    'jobName': 'Job-1'})
+mdb.models['Model-1'].rootAssembly.rotate(angle=45.0, axisDirection=(-104.0, 
+    0.0, 0.0), axisPoint=(104.0, 0.0, 0.0), instanceList=(
+    'central_shaft_outer-1', ))
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'CAIDOMENICOCF01', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_S_SURF-4-ASSEMBLY_M_SURF-4), NOT ALL THE NODES THAT HAVE BEEN ADJUSTED WERE PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_S_SURF-4-ASSEMBLY_M_SURF-4), ADJUSTED NODES WITH VERY SMALL ADJUSTMENTS WERE NOT PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '220 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\temp\\Job-1.odb', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'CAIDOMENICOCF01', 'handle': 4104, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 3686.0})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Sun Sep 17 11:44:20 2017', 
+    'jobName': 'Job-1'})
+mdb.models['Model-1'].rootAssembly.rotate(angle=45.0, axisDirection=(-104.0, 
+    0.0, 0.0), axisPoint=(104.0, 0.0, 0.0), instanceList=(
+    'central_shaft_outer-1', ))
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'CAIDOMENICOCF01', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_S_SURF-4-ASSEMBLY_M_SURF-4), NOT ALL THE NODES THAT HAVE BEEN ADJUSTED WERE PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_S_SURF-4-ASSEMBLY_M_SURF-4), ADJUSTED NODES WITH VERY SMALL ADJUSTMENTS WERE NOT PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '220 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\temp\\Job-1.odb', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'CAIDOMENICOCF01', 'handle': 5704, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 3686.0})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Sun Sep 17 11:51:44 2017', 
+    'jobName': 'Job-1'})
+mdb.models['Model-1'].rootAssembly.rotate(angle=45.0, axisDirection=(-104.0, 
+    0.0, 0.0), axisPoint=(104.0, 0.0, 0.0), instanceList=(
+    'central_shaft_outer-1', ))
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'CAIDOMENICOCF01', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_S_SURF-4-ASSEMBLY_M_SURF-4), NOT ALL THE NODES THAT HAVE BEEN ADJUSTED WERE PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_S_SURF-4-ASSEMBLY_M_SURF-4), ADJUSTED NODES WITH VERY SMALL ADJUSTMENTS WERE NOT PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '220 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\temp\\Job-1.odb', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'CAIDOMENICOCF01', 'handle': 5144, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 3686.0})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Sun Sep 17 11:58:19 2017', 
+    'jobName': 'Job-1'})
+mdb.models['Model-1'].rootAssembly.rotate(angle=45.0, axisDirection=(-104.0, 
+    0.0, 0.0), axisPoint=(104.0, 0.0, 0.0), instanceList=(
+    'central_shaft_outer-1', ))
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'CAIDOMENICOCF01', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_S_SURF-4-ASSEMBLY_M_SURF-4), NOT ALL THE NODES THAT HAVE BEEN ADJUSTED WERE PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_S_SURF-4-ASSEMBLY_M_SURF-4), ADJUSTED NODES WITH VERY SMALL ADJUSTMENTS WERE NOT PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '220 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\temp\\Job-1.odb', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'CAIDOMENICOCF01', 'handle': 5288, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 3686.0})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Sun Sep 17 12:48:59 2017', 
+    'jobName': 'Job-1'})
+mdb.models['Model-1'].rootAssembly.rotate(angle=45.0, axisDirection=(-104.0, 
+    0.0, 0.0), axisPoint=(104.0, 0.0, 0.0), instanceList=(
+    'central_shaft_outer-1', ))
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'CAIDOMENICOCF01', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_S_SURF-4-ASSEMBLY_M_SURF-4), NOT ALL THE NODES THAT HAVE BEEN ADJUSTED WERE PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_S_SURF-4-ASSEMBLY_M_SURF-4), ADJUSTED NODES WITH VERY SMALL ADJUSTMENTS WERE NOT PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '220 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\temp\\Job-1.odb', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'CAIDOMENICOCF01', 'handle': 6024, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 3686.0})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Sun Sep 17 12:57:18 2017', 
+    'jobName': 'Job-1'})
+mdb.models['Model-1'].rootAssembly.rotate(angle=45.0, axisDirection=(-104.0, 
+    0.0, 0.0), axisPoint=(104.0, 0.0, 0.0), instanceList=(
+    'central_shaft_outer-1', ))
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'CAIDOMENICOCF01', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_S_SURF-4-ASSEMBLY_M_SURF-4), NOT ALL THE NODES THAT HAVE BEEN ADJUSTED WERE PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_S_SURF-4-ASSEMBLY_M_SURF-4), ADJUSTED NODES WITH VERY SMALL ADJUSTMENTS WERE NOT PRINTED. SPECIFY *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '220 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\temp\\Job-1.odb', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'CAIDOMENICOCF01', 'handle': 6324, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 3686.0})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Sun Sep 17 13:04:10 2017', 
+    'jobName': 'Job-1'})
+# Save by caidomenico on 2017_09_17-16.33.06; build 2016 2015_09_24-22.31.09 126547

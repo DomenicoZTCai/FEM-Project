@@ -1,0 +1,547 @@
+1
+
+   Abaqus 3DEXPERIENCE R2016x                                  Date 25-Jun-2017   Time 00:20:59
+   For use at POLITECNICO DI MILANO under license from Dassault Systemes or its subsidiary.
+
+
+
+                         The Abaqus Software is a product of:
+
+                           Dassault Systemes SIMULIA Corp.
+                           1301 Atwood Avenue, Suite 101W
+                              Johnston, RI 02919, USA
+ 
+
+
+                   Available for internal use at POLITECNICO DI MILANO. 
+                   The Abaqus Online Support System is accessible
+                   through the "My Support" section of the SIMULIA
+                   Home Page at http://www.simulia.com.
+
+                   Support policies for academic licenses are described
+                   on the SIMULIA web site at
+                   http://www.3ds.com/products/simulia/academics/
+ 
+                          On machine vwctxxass06 
+                          you are authorized to run
+                          Abaqus/Standard until 29-Jun-2018
+
+                          Your site id is: 200000000026578 
+
+
+ 
+                    For assistance or any other information you may
+                    obtain contact information for your local office
+                    from the world wide web at:
+
+                      http://www.3ds.com/products/simulia/locations/
+
+ 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+                *                                                         * 
+                *                   *****************                     * 
+                *                   *  N O T I C E  *                     * 
+                *                   *****************                     * 
+                *                                                         * 
+                *                                                         * 
+                *                    Abaqus 3DEXPERIENCE R2016x                                   * 
+                *                                                         * 
+                *          BUILD ID: 2015_09_24-22.31.09 126547           * 
+                *                                                         * 
+                *                                                         * 
+                *  Please make sure you are using release 3DEXPERIENCE R2016x manuals    * 
+                *  plus the notes accompanying this release.              * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                *   This program may not be used for commercial purposes  * 
+                *           without payment of a commercial fee.          * 
+                *                                                         * 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+
+
+ 
+
+
+
+     PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   *******************************************************
+
+
+     END PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   ***********************************************************
+
+
+
+
+     OPTIONS BEING PROCESSED
+   ***************************
+
+
+  *Heading
+  *Node
+  *Element, type=C3D4
+  *Nset, nset=ASSEMBLY_CENTRAL_SHAFT-1_SET-1
+  *Elset, elset=ASSEMBLY_CENTRAL_SHAFT-1_SET-1
+  *Node
+  *Element, type=C3D6
+  *Element, type=C3D8R
+  *Nset, nset=ASSEMBLY_CENTRAL_SHAFT-COPY-1_SET-1
+  *Elset, elset=ASSEMBLY_CENTRAL_SHAFT-COPY-1_SET-1
+  *Node
+  *Nset, nset="ASSEMBLY__T-central_shaft-Copy-1-Datum csys-1"
+  *Nset, nset=ASSEMBLY_M_SET-1
+  *Nset, nset=ASSEMBLY_M_SET-2
+  *Nset, nset=ASSEMBLY_M_SET-3
+  *Nset, nset=ASSEMBLY_M_SET-6
+  *Nset, nset=ASSEMBLY_SET-10
+  *Nset, nset=ASSEMBLY_SET-11
+  *Nset, nset=ASSEMBLY_SET-12
+  *Nset, nset=ASSEMBLY_SET-4
+  *Nset, nset=ASSEMBLY_SET-5
+  *Nset, nset=ASSEMBLY_SET-7
+  *Nset, nset=ASSEMBLY_SET-9
+  *Elset, elset=ASSEMBLY__M_SURF-4_S3
+  *Elset, elset=ASSEMBLY__M_SURF-4_S4
+  *Elset, elset=ASSEMBLY__M_SURF-4_S5
+  *Elset, elset=ASSEMBLY__M_SURF-4_S6
+  *Elset, elset=ASSEMBLY__SURF-7_S1
+  *Elset, elset=ASSEMBLY__SURF-7_S3
+  *Elset, elset=ASSEMBLY__SURF-8_S1
+  *Elset, elset=ASSEMBLY__SURF-8_S2
+  *Elset, elset=ASSEMBLY__SURF-8_S3
+  *Elset, elset=ASSEMBLY__SURF-8_S4
+  *Elset, elset=ASSEMBLY__S_SURF-1_S1
+  *Elset, elset=ASSEMBLY__S_SURF-1_S2
+  *Elset, elset=ASSEMBLY__S_SURF-1_S3
+  *Elset, elset=ASSEMBLY__S_SURF-1_S4
+  *Elset, elset=ASSEMBLY__S_SURF-2_S1
+  *Elset, elset=ASSEMBLY__S_SURF-2_S2
+  *Elset, elset=ASSEMBLY__S_SURF-2_S3
+  *Elset, elset=ASSEMBLY__S_SURF-2_S4
+  *Elset, elset=ASSEMBLY__S_SURF-3_S5
+  *Elset, elset=ASSEMBLY__S_SURF-4_S1
+  *Elset, elset=ASSEMBLY__S_SURF-4_S2
+  *Elset, elset=ASSEMBLY__S_SURF-4_S3
+  *Elset, elset=ASSEMBLY__S_SURF-4_S4
+  *Elset, elset=ASSEMBLY__S_SURF-6_S1
+  *Elset, elset=ASSEMBLY__S_SURF-6_S2
+  *Elset, elset=ASSEMBLY__S_SURF-6_S3
+  *Elset, elset=ASSEMBLY__S_SURF-6_S4
+  *material, name=MATERIAL-1
+  *density
+  *elastic
+  *solidsection, elset=ASSEMBLY_CENTRAL_SHAFT-1_SET-1, material=MATERIAL-1
+  *solidsection, elset=ASSEMBLY_CENTRAL_SHAFT-COPY-1_SET-1, material=MATERIAL-1
+  *solidsection, elset=ASSEMBLY_CENTRAL_SHAFT-1_SET-1, material=MATERIAL-1
+  *solidsection, elset=ASSEMBLY_CENTRAL_SHAFT-COPY-1_SET-1, material=MATERIAL-1
+  *tie, name=ASSEMBLY_CONSTRAINT-4, adjust=YES
+  *surface, type=ELEMENT, name=ASSEMBLY_SURF-7
+  *surface, type=ELEMENT, name=ASSEMBLY_SURF-8
+  *surface, type=ELEMENT, name=ASSEMBLY_M_SURF-4
+  *surface, type=ELEMENT, name=ASSEMBLY_S_SURF-1
+  *surface, type=ELEMENT, name=ASSEMBLY_S_SURF-2
+  *surface, type=ELEMENT, name=ASSEMBLY_S_SURF-3
+  *surface, type=ELEMENT, name=ASSEMBLY_S_SURF-4
+  *surface, type=ELEMENT, name=ASSEMBLY_S_SURF-6
+  *tie, name=ASSEMBLY_CONSTRAINT-4, adjust=YES
+  *surface, type=ELEMENT, name=ASSEMBLY_SURF-7
+  *surface, type=ELEMENT, name=ASSEMBLY_SURF-8
+  *surface, type=ELEMENT, name=ASSEMBLY_M_SURF-4
+  *surface, type=ELEMENT, name=ASSEMBLY_S_SURF-1
+  *surface, type=ELEMENT, name=ASSEMBLY_S_SURF-2
+  *surface, type=ELEMENT, name=ASSEMBLY_S_SURF-3
+  *surface, type=ELEMENT, name=ASSEMBLY_S_SURF-4
+  *surface, type=ELEMENT, name=ASSEMBLY_S_SURF-6
+  *surface, type=ELEMENT, name=ASSEMBLY_SURF-7
+  *surface, type=ELEMENT, name=ASSEMBLY_SURF-8
+  *surface, type=ELEMENT, name=ASSEMBLY_M_SURF-4
+  *surface, type=ELEMENT, name=ASSEMBLY_S_SURF-1
+  *surface, type=ELEMENT, name=ASSEMBLY_S_SURF-2
+  *surface, type=ELEMENT, name=ASSEMBLY_S_SURF-3
+  *surface, type=ELEMENT, name=ASSEMBLY_S_SURF-4
+  *surface, type=ELEMENT, name=ASSEMBLY_S_SURF-6
+  *tie, name=ASSEMBLY_CONSTRAINT-4, adjust=YES
+  *coupling, constraintname=ASSEMBLY_CONSTRAINT-1, refnode=ASSEMBLY_M_SET-1, surface=ASSEMBLY_S_SURF-1
+  *coupling, constraintname=ASSEMBLY_CONSTRAINT-2, refnode=ASSEMBLY_M_SET-2, surface=ASSEMBLY_S_SURF-2
+  *coupling, constraintname=ASSEMBLY_CONSTRAINT-3, refnode=ASSEMBLY_M_SET-3, surface=ASSEMBLY_S_SURF-3
+  *coupling, constraintname=ASSEMBLY_CONSTRAINT-5, refnode=ASSEMBLY_M_SET-6, surface=ASSEMBLY_S_SURF-6
+  *tie, name=ASSEMBLY_CONSTRAINT-4, adjust=YES
+  *coupling, constraintname=ASSEMBLY_CONSTRAINT-1, refnode=ASSEMBLY_M_SET-1, surface=ASSEMBLY_S_SURF-1
+  *coupling, constraintname=ASSEMBLY_CONSTRAINT-2, refnode=ASSEMBLY_M_SET-2, surface=ASSEMBLY_S_SURF-2
+  *coupling, constraintname=ASSEMBLY_CONSTRAINT-3, refnode=ASSEMBLY_M_SET-3, surface=ASSEMBLY_S_SURF-3
+  *coupling, constraintname=ASSEMBLY_CONSTRAINT-5, refnode=ASSEMBLY_M_SET-6, surface=ASSEMBLY_S_SURF-6
+  *coupling, constraintname=ASSEMBLY_CONSTRAINT-1, refnode=ASSEMBLY_M_SET-1, surface=ASSEMBLY_S_SURF-1
+  *coupling, constraintname=ASSEMBLY_CONSTRAINT-2, refnode=ASSEMBLY_M_SET-2, surface=ASSEMBLY_S_SURF-2
+  *coupling, constraintname=ASSEMBLY_CONSTRAINT-3, refnode=ASSEMBLY_M_SET-3, surface=ASSEMBLY_S_SURF-3
+  *coupling, constraintname=ASSEMBLY_CONSTRAINT-5, refnode=ASSEMBLY_M_SET-6, surface=ASSEMBLY_S_SURF-6
+  *coupling, constraintname=ASSEMBLY_CONSTRAINT-1, refnode=ASSEMBLY_M_SET-1, surface=ASSEMBLY_S_SURF-1
+  *distributing, weightingmethod=UNIFORM
+  *coupling, constraintname=ASSEMBLY_CONSTRAINT-2, refnode=ASSEMBLY_M_SET-2, surface=ASSEMBLY_S_SURF-2
+  *distributing, weightingmethod=UNIFORM
+  *coupling, constraintname=ASSEMBLY_CONSTRAINT-3, refnode=ASSEMBLY_M_SET-3, surface=ASSEMBLY_S_SURF-3
+  *distributing, weightingmethod=UNIFORM
+  *coupling, constraintname=ASSEMBLY_CONSTRAINT-5, refnode=ASSEMBLY_M_SET-6, surface=ASSEMBLY_S_SURF-6
+  *distributing, weightingmethod=UNIFORM
+  *transform, nset="ASSEMBLY__T-central_shaft-Copy-1-Datum csys-1"
+  *boundary
+  *boundary
+  *boundary
+  *boundary
+  *boundary
+  *boundary
+  *tie, name=ASSEMBLY_CONSTRAINT-4, adjust=YES
+
+ ***WARNING: FOR *TIE PAIR (ASSEMBLY_S_SURF-4-ASSEMBLY_M_SURF-4), ADJUSTED 
+             NODES WITH VERY SMALL ADJUSTMENTS WERE NOT PRINTED. SPECIFY 
+             *PREPRINT,MODEL=YES FOR COMPLETE PRINTOUT.
+  *tie, name=ASSEMBLY_CONSTRAINT-4, adjust=YES
+  *tie, name=ASSEMBLY_CONSTRAINT-4, adjust=YES
+  *surface, type=ELEMENT, name=ASSEMBLY_SURF-7
+  *surface, type=ELEMENT, name=ASSEMBLY_SURF-8
+  *surface, type=ELEMENT, name=ASSEMBLY_M_SURF-4
+  *surface, type=ELEMENT, name=ASSEMBLY_S_SURF-1
+  *surface, type=ELEMENT, name=ASSEMBLY_S_SURF-2
+  *surface, type=ELEMENT, name=ASSEMBLY_S_SURF-3
+  *surface, type=ELEMENT, name=ASSEMBLY_S_SURF-4
+  *surface, type=ELEMENT, name=ASSEMBLY_S_SURF-6
+  *tie, name=ASSEMBLY_CONSTRAINT-4, adjust=YES
+  *output, field, variable=PRESELECT
+  *output, history, variable=PRESELECT
+  *output, field, variable=PRESELECT
+  *output, history, variable=PRESELECT
+  *output, field, variable=PRESELECT
+  *output, history, variable=PRESELECT
+  
+                               E L E M E N T   Q U A L I T Y  C H E C K S        
+  
+  
+ ***NOTES: DISTORTED ISOPARAMETRIC ELEMENTS: ANGLE BETWEEN ISOPARAMETRIC LINES 
+           IS LESS THAN 45 DEGREES OR GREATER THAN 135 DEGREES.
+  
+           TETRAHEDRAL QUALITY MEASURE: VOLUME OF TETRAHEDRON DIVIDED BY THE 
+           VOLUME OF EQUILATERAL TETRAHEDRON WITH SAME CIRCUMSPHERE RADIUS; 
+           0 FOR DEGENERATE TETRAHEDRON AND 1 FOR EQUILATERIAL TETRAHEDRON. IT 
+           IS RECOMMENDED THAT THE TETRAHEDRAL QUALITY MEASURE BE GREATER THAN 
+           0.02, THE MIN INTERIOR (DIHEDRAL) ANGLE BE GREATER THAN 10 DEGREES, 
+           AND THE MAX INTERIOR (DIHEDRAL) ANGLE BE LESS THAN 160 DEGREES. 
+  
+           MODIFIED TETRAHEDRAL QUALITY MEASURE: ANGLES BETWEEN THE TWO LINE 
+           SEGMENTS ON EACH EDGE; THE EDGES OF MODIFIED TETRAHEDRAL SHOULD BE 
+           AS STRAIGHT AS POSSIBLE. IT IS RECOMMENDED THAT THE ANGLE BETWEEN 
+           THE TWO LINE SEGMENTS ON EACH EDGE IS BETWEEN 160 AND 180 DEGREES. 
+  
+           TRIANGULAR QUALITY MEASURE: AREA OF TRIANGLE DIVIDED BY THE AREA OF 
+           EQUILATERAL TRIANGLE WITH SAME CIRCUMCIRCLE RADIUS; 0 FOR DEGENERATE 
+           TRIANGLE AND 1 FOR EQUILATERAL TRIANGLE. IT IS RECOMMENDED THAT THE
+           TRIANGULAR QUALITY MEASURE BE GREATER THAN 0.01, THE MIN INTERIOR 
+           ANGLE BE GREATER THAN 10 DEGREES, AND THE MAX INTERIOR ANGLE BE LESS 
+           THAN 160 DEGREES. 
+  
+           NODAL ADJUSTMENTS ARISING FROM CONTACT INTERACTIONS AND/OR TIE 
+           CONSTRAINTS CAN CAUSE SEVERE ELEMENT DISTORTION. IT MAY BE NECESSARY 
+           TO REMESH IN ORDER TO REDUCE THE AMOUNT OF ADJUSTMENT. 
+
+ ***WARNING: 162 elements are distorted. Either the isoparametric angles are 
+             out of the suggested limits or the triangular or tetrahedral 
+             quality measure is bad. The elements have been identified in 
+             element set WarnElemDistorted.
+  
+ --------------------------------------------------------------------------------
+ Distorted tetrahedral elements
+  
+          Element          Quality measure     Min angle        Max angle     Adjusted nodes 
+ ------------------------- ---------------- ---------------- ---------------- -------------- 
+       CENTRAL_SHAFT-1.335         0.120052          5.23923          120.566       NO       
+       CENTRAL_SHAFT-1.371          0.10875          4.98339          123.241       NO       
+       CENTRAL_SHAFT-1.457        0.0964206          7.95242          96.1605       NO       
+       CENTRAL_SHAFT-1.480         0.126744          6.15974          115.857       NO       
+       CENTRAL_SHAFT-1.525        0.0873536           6.0604          110.123       NO       
+       CENTRAL_SHAFT-1.939         0.134565          7.23944          94.6884       NO       
+      CENTRAL_SHAFT-1.2401         0.108043          4.73874          94.5593       NO       
+      CENTRAL_SHAFT-1.4077        0.0691066          6.20888          118.563       NO       
+      CENTRAL_SHAFT-1.4097        0.0637416           5.9874          114.638       NO       
+      CENTRAL_SHAFT-1.4098          0.11746          7.13059          89.2861       NO       
+      CENTRAL_SHAFT-1.4426         0.131492          6.02017          93.3871       NO       
+      CENTRAL_SHAFT-1.4528        0.0931313          5.03195          115.862       NO       
+      CENTRAL_SHAFT-1.4562        0.0844356          5.61819          118.539       NO       
+      CENTRAL_SHAFT-1.5278         0.115476          5.74458          90.1633       NO       
+      CENTRAL_SHAFT-1.5289         0.108043          6.63397          90.3057       NO       
+      CENTRAL_SHAFT-1.5293         0.113465          6.41215          95.2401       NO       
+      CENTRAL_SHAFT-1.5300        0.0752562          6.10662          112.686       NO       
+      CENTRAL_SHAFT-1.5315         0.120302          5.73145          92.0355       NO       
+      CENTRAL_SHAFT-1.5319        0.0768481          4.85936          104.261       NO       
+      CENTRAL_SHAFT-1.5321         0.081922          5.42429          115.177       NO       
+      CENTRAL_SHAFT-1.5336        0.0820253          4.94634           129.45       NO       
+      CENTRAL_SHAFT-1.5337        0.0845072          4.72403          102.916       NO       
+      CENTRAL_SHAFT-1.5343         0.086935           4.5734          96.1549       NO       
+      CENTRAL_SHAFT-1.5351        0.0873536          5.37723          114.636       NO       
+      CENTRAL_SHAFT-1.5353        0.0844356          5.35612          114.877       NO       
+      CENTRAL_SHAFT-1.5356         0.087576          6.20349          95.6198       NO       
+      CENTRAL_SHAFT-1.5366         0.098239          5.17794          113.158       NO       
+      CENTRAL_SHAFT-1.5381        0.0839115          4.98918          121.546       NO       
+      CENTRAL_SHAFT-1.5386         0.081922          6.29006          110.351       NO       
+      CENTRAL_SHAFT-1.5387        0.0794759          5.83372          118.441       NO       
+      CENTRAL_SHAFT-1.5406        0.0927592          5.15134           116.84       NO       
+      CENTRAL_SHAFT-1.5408        0.0739977          5.88107          112.627       NO       
+      CENTRAL_SHAFT-1.5423        0.0827782          5.22319          101.011       NO       
+      CENTRAL_SHAFT-1.5473        0.0994192          6.74662          91.5446       NO       
+      CENTRAL_SHAFT-1.5492        0.0754557          5.92567          112.314       NO       
+      CENTRAL_SHAFT-1.5494         0.105843           6.7659          90.7111       NO       
+      CENTRAL_SHAFT-1.5496         0.110972          5.11116           94.079       NO       
+      CENTRAL_SHAFT-1.5497        0.0994192          4.50763          90.2227       NO       
+      CENTRAL_SHAFT-1.5505         0.109742          4.91235          94.0467       NO       
+      CENTRAL_SHAFT-1.5514         0.105843          4.65704          93.6039       NO       
+      CENTRAL_SHAFT-1.5521         0.110556          6.46027          90.8474       NO       
+      CENTRAL_SHAFT-1.5550        0.0810542          6.91033           96.557       NO       
+      CENTRAL_SHAFT-1.5626        0.0839115          5.61452           117.42       NO       
+      CENTRAL_SHAFT-1.5678         0.119646          7.75505          100.952       NO       
+      CENTRAL_SHAFT-1.6495         0.110556          4.93864           93.858       NO       
+      CENTRAL_SHAFT-1.7349         0.114072          7.23769          99.5519       NO       
+      CENTRAL_SHAFT-1.7414         0.098239          5.72813          109.138       NO       
+      CENTRAL_SHAFT-1.7428        0.0900835          5.94423          111.448       NO       
+      CENTRAL_SHAFT-1.7495        0.0721792          5.94112          117.531       NO       
+      CENTRAL_SHAFT-1.7578        0.0752562          5.64415          117.331       NO       
+      CENTRAL_SHAFT-1.7592         0.077107          8.95577           94.779       NO       
+      CENTRAL_SHAFT-1.7613        0.0596631          7.38954          108.576       NO       
+      CENTRAL_SHAFT-1.7638         0.132454          6.15031          94.0873       NO       
+      CENTRAL_SHAFT-1.7696        0.0865735           4.9054          126.167       NO       
+      CENTRAL_SHAFT-1.7707        0.0830003          5.30285          131.957       NO       
+      CENTRAL_SHAFT-1.7722        0.0852477          4.57921          129.352       NO       
+      CENTRAL_SHAFT-1.8210        0.0758083          5.00132          113.638       NO       
+      CENTRAL_SHAFT-1.8361         0.132647          5.94639          91.1043       NO       
+      CENTRAL_SHAFT-1.8365        0.0690446          6.49006          113.504       NO       
+      CENTRAL_SHAFT-1.8373         0.110972          6.34941          90.8471       NO       
+      CENTRAL_SHAFT-1.8404         0.096004          7.09467          93.1781       NO       
+      CENTRAL_SHAFT-1.8405         0.096004          5.37595          99.4845       NO       
+      CENTRAL_SHAFT-1.8462         0.116713          6.38391           107.65       NO       
+      CENTRAL_SHAFT-1.8556         0.101127          8.96967          104.428       NO       
+      CENTRAL_SHAFT-1.8562        0.0754557          5.87102          116.703       NO       
+      CENTRAL_SHAFT-1.8622        0.0669364          4.95997          118.182       NO       
+      CENTRAL_SHAFT-1.8661         0.125238          6.90527          106.321       NO       
+      CENTRAL_SHAFT-1.8662        0.0931313          5.26702          119.064       NO       
+      CENTRAL_SHAFT-1.8685        0.0794759           5.4493          114.649       NO       
+      CENTRAL_SHAFT-1.8700        0.0676213          7.49751          109.607       NO       
+      CENTRAL_SHAFT-1.8719          0.06507          4.83288          120.813       NO       
+      CENTRAL_SHAFT-1.8726        0.0885428          4.58683          98.4245       NO       
+      CENTRAL_SHAFT-1.8731        0.0994102          5.54456           108.16       NO       
+      CENTRAL_SHAFT-1.8769        0.0670093          6.23876          116.159       NO       
+      CENTRAL_SHAFT-1.8776         0.159942          7.02614          98.3399       NO       
+      CENTRAL_SHAFT-1.8784         0.122235          6.99722          118.129       NO       
+      CENTRAL_SHAFT-1.8974         0.117296          5.54419          102.255       NO       
+      CENTRAL_SHAFT-1.9031         0.112037           5.7655          106.407       NO       
+      CENTRAL_SHAFT-1.9037        0.0557911          5.85039          121.301       NO       
+      CENTRAL_SHAFT-1.9156          0.12063          5.88725          119.416       NO       
+      CENTRAL_SHAFT-1.9195        0.0877362           3.7878          111.628       NO       
+      CENTRAL_SHAFT-1.9888        0.0761812          3.60542          113.905       NO       
+      CENTRAL_SHAFT-1.9923         0.118931          8.00892          105.946       NO       
+     CENTRAL_SHAFT-1.10004        0.0633118          2.83873          126.266       NO       
+     CENTRAL_SHAFT-1.10010         0.189159          8.49721          134.548       NO       
+     CENTRAL_SHAFT-1.10330         0.117093          7.50942          100.828       NO       
+     CENTRAL_SHAFT-1.10496         0.101998          5.31015          103.064       NO       
+     CENTRAL_SHAFT-1.13141         0.106763          4.89563          94.8447       NO       
+     CENTRAL_SHAFT-1.14302         0.115476          5.25202          94.4216       NO       
+     CENTRAL_SHAFT-1.14389         0.141812          6.23336           96.091       NO       
+     CENTRAL_SHAFT-1.14699        0.0986011          8.44976          101.445       NO       
+     CENTRAL_SHAFT-1.14775        0.0806782          3.78254          120.079       NO       
+     CENTRAL_SHAFT-1.14788        0.0574894          5.76657          114.291       NO       
+     CENTRAL_SHAFT-1.15450         0.116489          6.68104          89.7904       NO       
+     CENTRAL_SHAFT-1.16946         0.117949          6.19235          91.2964       NO       
+     CENTRAL_SHAFT-1.17378        0.0528739          5.60041          112.078       NO       
+     CENTRAL_SHAFT-1.18419         0.117048          7.75819          103.858       NO       
+     CENTRAL_SHAFT-1.19081         0.061595          4.33165          125.292       NO       
+     CENTRAL_SHAFT-1.19197        0.0702054          4.13322          110.966       NO       
+     CENTRAL_SHAFT-1.19323        0.0854183          5.50101          102.747       NO       
+     CENTRAL_SHAFT-1.19335         0.071833          5.64121          116.262       NO       
+     CENTRAL_SHAFT-1.19345          0.07002          5.77857          120.952       NO       
+     CENTRAL_SHAFT-1.19351        0.0951156          4.76485          111.613       NO       
+     CENTRAL_SHAFT-1.19367        0.0947166          6.65557          91.7707       NO       
+     CENTRAL_SHAFT-1.19462        0.0900835          5.65423           107.58       NO       
+     CENTRAL_SHAFT-1.19687        0.0866257          6.33332          101.132       NO       
+     CENTRAL_SHAFT-1.20048        0.0994102          5.40921          111.881       NO       
+     CENTRAL_SHAFT-1.20055        0.0657657          7.45951          108.194       NO       
+     CENTRAL_SHAFT-1.20115         0.123004          5.34248            116.2       NO       
+     CENTRAL_SHAFT-1.20135        0.0869101          3.84545          107.885       NO       
+     CENTRAL_SHAFT-1.20363         0.132419          6.98171          124.767       NO       
+     CENTRAL_SHAFT-1.20371         0.129375          6.40857          98.3218       NO       
+     CENTRAL_SHAFT-1.20724        0.0205901          9.48266          127.839       NO       
+     CENTRAL_SHAFT-1.20734         0.155074           7.4342           99.887       NO       
+     CENTRAL_SHAFT-1.20901        0.0992652          4.33017          102.463       NO       
+     CENTRAL_SHAFT-1.21352         0.103519          6.82976          89.6593       NO       
+     CENTRAL_SHAFT-1.21353         0.118147          5.73784           90.281       NO       
+     CENTRAL_SHAFT-1.21705         0.126062          6.15332          108.432       NO       
+     CENTRAL_SHAFT-1.21709          0.12444          6.41727          92.1779       NO       
+     CENTRAL_SHAFT-1.21870         0.128313          7.46475          112.855       NO       
+     CENTRAL_SHAFT-1.22137        0.0796521          4.57444          109.041       NO       
+     CENTRAL_SHAFT-1.22139        0.0873372          6.47846          132.402       NO       
+     CENTRAL_SHAFT-1.22140         0.078718          4.00464          107.631       NO       
+     CENTRAL_SHAFT-1.22179         0.134009          5.93154          91.6922       NO       
+     CENTRAL_SHAFT-1.22326         0.120867          5.74683          97.7936       NO       
+     CENTRAL_SHAFT-1.22382        0.0756825          4.64938          112.563       NO       
+     CENTRAL_SHAFT-1.22431         0.128857          6.12662          109.775       NO       
+     CENTRAL_SHAFT-1.22433         0.139047          6.04087          102.948       NO       
+     CENTRAL_SHAFT-1.22689         0.118124          5.17224           101.09       NO       
+     CENTRAL_SHAFT-1.22690          0.06555          6.89412           116.63       NO       
+     CENTRAL_SHAFT-1.22701        0.0504505          5.73481          103.088       NO       
+     CENTRAL_SHAFT-1.22735        0.0890437          5.11773          112.127       NO       
+     CENTRAL_SHAFT-1.23017        0.0994808          6.52157          122.457       NO       
+     CENTRAL_SHAFT-1.23844        0.0772801           4.2483          124.804       NO       
+     CENTRAL_SHAFT-1.24107         0.115743          5.63133          111.801       NO       
+     CENTRAL_SHAFT-1.24110         0.121994          6.17374           107.41       NO       
+     CENTRAL_SHAFT-1.24113          0.12793          6.22669          112.496       NO       
+     CENTRAL_SHAFT-1.24125        0.0536658          4.66934          104.938       NO       
+     CENTRAL_SHAFT-1.24863         0.136832          7.72031          104.985       NO       
+     CENTRAL_SHAFT-1.24865         0.109742          6.54986          90.7736       NO       
+     CENTRAL_SHAFT-1.25519         0.194271          8.88034          134.654       NO       
+     CENTRAL_SHAFT-1.26121         0.176401          7.67787          109.684       NO       
+     CENTRAL_SHAFT-1.27016         0.104136           4.5455          94.8414       NO       
+     CENTRAL_SHAFT-1.27149        0.0944548          4.89723          102.873       NO       
+     CENTRAL_SHAFT-1.27220         0.137151          6.74935           114.55       NO       
+     CENTRAL_SHAFT-1.27221         0.134239          7.45125          91.1932       NO       
+     CENTRAL_SHAFT-1.27262        0.0718847          7.79865          104.571       NO       
+     CENTRAL_SHAFT-1.27613         0.106189          4.81784          104.257       NO       
+     CENTRAL_SHAFT-1.27614         0.133549          6.06718          99.1176       NO       
+     CENTRAL_SHAFT-1.30552        0.0751985          5.45119          125.059       NO       
+     CENTRAL_SHAFT-1.30558         0.126294          6.05174          103.347       NO       
+     CENTRAL_SHAFT-1.31100        0.0757849          6.17771          101.798       NO       
+     CENTRAL_SHAFT-1.31196         0.178059          9.25538          92.7162       NO       
+     CENTRAL_SHAFT-1.31867        0.0868716          6.49856          90.5667       NO       
+     CENTRAL_SHAFT-1.32487         0.110196          6.02065          105.146       NO       
+     CENTRAL_SHAFT-1.33236         0.121909          6.12274          118.551       NO       
+     CENTRAL_SHAFT-1.33772         0.107355          7.12499          113.033       NO       
+     CENTRAL_SHAFT-1.33841         0.123358          8.84559          96.6966       NO       
+     CENTRAL_SHAFT-1.33899         0.128522          6.55235          107.206       NO       
+     CENTRAL_SHAFT-1.34511         0.141222          7.18356          151.364       NO       
+     CENTRAL_SHAFT-1.35182          0.11619          6.86891          108.705       NO       
+     CENTRAL_SHAFT-1.35230         0.111055          7.77232          99.3778       NO       
+  
+  
+  *Step, name=Step-1, nlgeom=NO
+  *output, field, variable=PRESELECT
+  *output, history, variable=PRESELECT
+  *Step, name=Step-1, nlgeom=NO
+  *Step, name=Step-1, nlgeom=NO
+  *static
+  *boundary
+  *boundary
+  *boundary
+  *dsload
+  *dsload
+  *output, field, variable=PRESELECT
+  *output, history, variable=PRESELECT
+  *endstep
+  *Step, name=Step-1, nlgeom=NO
+  *static
+  *boundary
+  *boundary
+  *boundary
+  *cload
+  *endstep
+
+     - (RAMP) OR (STEP) - INDICATE USE OF DEFAULT AMPLITUDES ASSOCIATED WITH THE STEP
+
+     - (RAMP) OR (STEP) - INDICATE USE OF DEFAULT AMPLITUDES ASSOCIATED WITH THE STEP
+
+
+
+                            P R O B L E M   S I Z E
+
+
+          NUMBER OF ELEMENTS IS                                 40399
+          NUMBER OF NODES IS                                     9156
+          NUMBER OF NODES DEFINED BY THE USER                    9152
+          NUMBER OF INTERNAL NODES GENERATED BY THE PROGRAM         4
+          TOTAL NUMBER OF VARIABLES IN THE MODEL                27492
+          (DEGREES OF FREEDOM PLUS MAX NO. OF ANY LAGRANGE MULTIPLIER
+           VARIABLES. INCLUDE *PRINT,SOLVE=YES TO GET THE ACTUAL NUMBER.)
+
+
+
+                              END OF USER INPUT PROCESSING
+
+
+
+     JOB TIME SUMMARY
+       USER TIME (SEC)      =   1.5000    
+       SYSTEM TIME (SEC)    =  0.10000    
+       TOTAL CPU TIME (SEC) =   1.6000    
+       WALLCLOCK TIME (SEC) =          3
+1
+
+   Abaqus 3DEXPERIENCE R2016x                                  Date 25-Jun-2017   Time 00:21:05
+   For use at POLITECNICO DI MILANO under license from Dassault Systemes or its subsidiary.
+
+                                                                                               STEP    1  INCREMENT    1
+                                                                                          TIME COMPLETED IN THIS STEP   0.00    
+
+
+                        S T E P       1     S T A T I C   A N A L Y S I S
+
+
+                                                                                          
+
+     AUTOMATIC TIME CONTROL WITH -
+          A SUGGESTED INITIAL TIME INCREMENT OF                 1.00    
+          AND A TOTAL TIME PERIOD OF                            1.00    
+          THE MINIMUM TIME INCREMENT ALLOWED IS                1.000E-05
+          THE MAXIMUM TIME INCREMENT ALLOWED IS                 1.00    
+
+     LINEAR EQUATION SOLVER TYPE         DIRECT SPARSE
+  
+                   M E M O R Y   E S T I M A T E
+  
+ PROCESS      FLOATING PT       MINIMUM MEMORY        MEMORY TO
+              OPERATIONS           REQUIRED          MINIMIZE I/O
+             PER ITERATION           (MB)               (MB)
+  
+     1         6.96E+009               40                211
+  
+ NOTE:
+      (1) SINCE ABAQUS DOES NOT PRE-ALLOCATE MEMORY AND ONLY ALLOCATES MEMORY AS NEEDED DURING THE ANALYSIS,
+          THE MEMORY REQUIREMENT PRINTED HERE CAN ONLY BE VIEWED AS A GENERAL GUIDELINE BASED ON THE BEST
+          KNOWLEDGE AVAILABLE AT THE BEGINNING OF A STEP BEFORE THE SOLUTION PROCESS HAS BEGUN.
+      (2) THE ESTIMATE IS NORMALLY UPDATED AT THE BEGINNING OF EVERY STEP. IT IS THE MAXIMUM VALUE OF THE
+          ESTIMATE FROM THE CURRENT STEP TO THE LAST STEP OF THE ANALYSIS, WITH UNSYMMETRIC SOLUTION TAKEN
+          INTO ACCOUNT IF APPLICABLE. 
+      (3) SINCE THE ESTIMATE IS BASED ON THE ACTIVE DEGREES OF FREEDOM IN THE FIRST ITERATION OF THE 
+          CURRENT STEP, THE MEMORY ESTIMATE MIGHT BE SIGNIFICANTLY DIFFERENT THAN ACTUAL USAGE FOR 
+          PROBLEMS WITH SUBSTANTIAL CHANGES IN ACTIVE DEGREES OF FREEDOM BETWEEN STEPS (OR EVEN WITHIN
+          THE SAME STEP). EXAMPLES ARE: PROBLEMS WITH SIGNIFICANT CONTACT CHANGES, PROBLEMS WITH MODEL
+          CHANGE, PROBLEMS WITH BOTH STATIC STEP AND STEADY STATE DYNAMIC PROCEDURES WHERE ACOUSTIC 
+          ELEMENTS WILL ONLY BE ACTIVATED IN THE STEADY STATE DYNAMIC STEPS.
+      (4) FOR MULTI-PROCESS EXECUTION, THE ESTIMATED VALUE OF FLOATING POINT OPERATIONS FOR EACH PROCESS
+          IS BASED ON AN INITIAL SCHEDULING OF OPERATIONS AND MIGHT NOT REFLECT THE ACTUAL FLOATING 
+          POINT OPERATIONS COMPLETED ON EACH PROCESS. OPERATIONS ARE DYNAMICALLY BALANCED DURING EXECUTION, 
+          SO THE ACTUAL BALANCE OF OPERATIONS BETWEEN PROCESSES IS EXPECTED TO BE BETTER THAN THE ESTIMATE
+          PRINTED HERE.
+      (5) THE UPPER LIMIT OF MEMORY THAT CAN BE ALLOCATED BY ABAQUS WILL IN GENERAL DEPEND ON THE VALUE OF
+          THE "MEMORY" PARAMETER AND THE AMOUNT OF PHYSICAL MEMORY AVAILABLE ON THE MACHINE. PLEASE SEE
+          THE "ABAQUS ANALYSIS USER'S MANUAL" FOR MORE DETAILS. THE ACTUAL USAGE OF MEMORY AND OF DISK
+          SPACE FOR SCRATCH DATA WILL DEPEND ON THIS UPPER LIMIT AS WELL AS THE MEMORY REQUIRED TO MINIMIZE
+          I/O. IF THE MEMORY UPPER LIMIT IS GREATER THAN THE MEMORY REQUIRED TO MINIMIZE I/O, THEN THE ACTUAL
+          MEMORY USAGE WILL BE CLOSE TO THE ESTIMATED "MEMORY TO MINIMIZE I/O" VALUE, AND THE SCRATCH DISK
+          USAGE WILL BE CLOSE-TO-ZERO; OTHERWISE, THE ACTUAL MEMORY USED WILL BE CLOSE TO THE PREVIOUSLY
+          MENTIONED MEMORY LIMIT, AND THE SCRATCH DISK USAGE WILL BE ROUGHLY PROPORTIONAL TO THE DIFFERENCE
+          BETWEEN THE ESTIMATED "MEMORY TO MINIMIZE I/O" AND THE MEMORY UPPER LIMIT. HOWEVER ACCURATE
+          ESTIMATE OF THE SCRATCH DISK SPACE IS NOT POSSIBLE.
+      (6) USING "*RESTART, WRITE" CAN GENERATE A LARGE AMOUNT OF DATA WRITTEN IN THE WORK DIRECTORY.
+
+
+          THE ANALYSIS HAS BEEN COMPLETED
+
+
+
+                              ANALYSIS COMPLETE
+                              WITH      2 WARNING MESSAGES ON THE DAT FILE
+                              AND       4 WARNING MESSAGES ON THE MSG FILE
+                                        4 WARNINGS ARE FOR NUMERICAL PROBLEMS
+
+
+
+     JOB TIME SUMMARY
+       USER TIME (SEC)      =   5.4000    
+       SYSTEM TIME (SEC)    =  0.20000    
+       TOTAL CPU TIME (SEC) =   5.6000    
+       WALLCLOCK TIME (SEC) =          9
